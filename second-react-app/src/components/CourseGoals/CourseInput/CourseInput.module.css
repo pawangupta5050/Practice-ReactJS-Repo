@@ -23,3 +23,12 @@
     border-color: #8b005d;
   }
   
+
+  .form-control.invalid label {
+    color: red;
+  }
+
+  .form-control.invalid input {
+    border-color: red;
+    background-color: salmon;
+  }
