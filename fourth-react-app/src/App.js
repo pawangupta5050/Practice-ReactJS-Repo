@@ -17,7 +17,6 @@ function App() {
     <div>
       <UserInput getUserInfo={addUserInfo} />
       <ResultList results={userInfo} />
-       
     </div>
   );
 }

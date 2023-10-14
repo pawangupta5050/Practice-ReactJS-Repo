@@ -30,7 +30,7 @@ function UserInput(props) {
     const formSubmitHandler = (e) => {
         e.preventDefault();
         // console.log(userInput)   
-        if (userInput.username.trim().length !== 0 && userInput.age.trim().length !== 0) {
+        if (userInput.username.trim().length !== 0 && userInput.age.trim().length !== 0 && +userInput.age > 1) {
             props.getUserInfo(userInput);
             setUserInput({
                 username: '',
