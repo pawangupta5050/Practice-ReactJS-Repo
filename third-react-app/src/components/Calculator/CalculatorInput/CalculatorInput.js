@@ -3,10 +3,10 @@ import Button from '../../UI/Button/Button'
 import style from './CalculatorInput.module.css'
 
 const initialInput = {
-  "current-savings" : "10000",
-  "yearly-contribution" : "1200",
-  "expected-return" : "7",
-  duration : "10",
+  "current-savings": "10000",
+  "yearly-contribution": "1200",
+  "expected-return": "7",
+  duration: "10",
 }
 
 function CalculatorInput(props) {
@@ -15,35 +15,23 @@ function CalculatorInput(props) {
 
   const inputChangeHandler = (e) => {
     e.preventDefault();
+    const value = e.target.value;
     console.log(e.target);
-    if(e.target.id === "current-savings"){
-      if(e.target.value.length === 0){
-        return;
-      }else {
-        setUserInput(prev => ({...prev, "current-savings" : e.target.value}))
-      }
+    if (e.target.id === "current-savings") {
+      console.log(e.target.value)
+      setUserInput(prev => ({ ...prev, "current-savings": value }))
       // console.log(userInput);  
-    }else if(e.target.id === "yearly-contribution"){
+    } else if (e.target.id === "yearly-contribution") {
       console.log("yearly-contribution")
-      if(e.target.value.length === 0){
-        return;
-      }else {
-        setUserInput(prev => ({...prev, "yearly-contribution" : e.target.value}))
-      }
-    }else if(e.target.id === "expected-return"){
+
+      setUserInput(prev => ({ ...prev, "yearly-contribution": value }))
+
+    } else if (e.target.id === "expected-return") {
       console.log("expected-return")
-      if(e.target.value.length === 0){
-        return;
-      }else {
-        setUserInput(prev => ({...prev, "expected-return" : e.target.value}))
-      }
-    }else if(e.target.id === "duration"){
+      setUserInput(prev => ({ ...prev, "expected-return": value }))
+    } else if (e.target.id === "duration") {
       console.log("duration")
-      if(e.target.value.length === 0){
-        return;
-      }else {
-        setUserInput(prev => ({...prev, "duration" : e.target.value}))
-      }
+      setUserInput(prev => ({ ...prev, "duration": value }))
     }
   }
 
@@ -58,18 +46,18 @@ function CalculatorInput(props) {
     setUserInput(initialInput)
   }
 
-  
+
   return (
     <div>
-        <form className={style.form} onSubmit={formSubmitHandler} >
+      <form className={style.form} onSubmit={formSubmitHandler} >
         <div className={style['input-group']}>
           <p>
             <label htmlFor=",">Current Savings ($)</label>
-            <input type="number" id="current-savings" value={userInput['current-savings']} onChange={inputChangeHandler} />
+            <input type="number" id="current-savings" value={userInput['current-savings']} onChange={inputChangeHandler} required />
           </p>
           <p>
             <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
-            <input type="number" id="yearly-contribution" value={userInput['yearly-contribution']} onChange={inputChangeHandler} />
+            <input type="number" id="yearly-contribution" value={userInput['yearly-contribution']} onChange={inputChangeHandler} required />
           </p>
         </div>
         <div className={style['input-group']}>
@@ -77,11 +65,11 @@ function CalculatorInput(props) {
             <label htmlFor="expected-return">
               Expected Interest (%, per year)
             </label>
-            <input type="number" id="expected-return" value={userInput['expected-return']} onChange={inputChangeHandler} />
+            <input type="number" id="expected-return" value={userInput['expected-return']} onChange={inputChangeHandler} required />
           </p>
           <p>
             <label htmlFor="duration">Investment Duration (years)</label>
-            <input type="number" id="duration" value={userInput['duration']} onChange={inputChangeHandler} />
+            <input type="number" id="duration" value={userInput['duration']} onChange={inputChangeHandler} required />
           </p>
         </div>
         <p className={style.actions}>
